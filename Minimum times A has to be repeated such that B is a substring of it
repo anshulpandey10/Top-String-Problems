@@ -1,0 +1,17 @@
+  int minRepeats(string A, string B) 
+    {
+     string temp=A;
+     int count=1;
+     while(A.length()<B.length())
+     {
+         A+=temp;
+         count++;
+     }
+     
+     if(A.find(B)!=-1)return count;
+     A+=temp;
+     count++;
+     if(A.find(B)!=-1)return count;
+     return -1;
+     
+    }
