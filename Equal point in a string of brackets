@@ -1,0 +1,30 @@
+ int findIndex(string str) {
+        // Your code goes here
+        int o =0, c=0;
+        
+        for(auto x: str)
+        {
+            if(x==')')
+                o++;
+        }
+        
+        for(int i =0;i<str.length(); i++)
+        {
+            if(str[i]='(')
+            {
+                c++;
+            }
+            else
+            {
+                o--;
+            }
+            if(o==c)
+            {
+                return i+1;
+            }
+        }
+        return o;
+        
+        
+        
+    }
