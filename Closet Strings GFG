@@ -1,0 +1,36 @@
+int shortestDistance(vector<string> &s, string word1, string word2)
+	{
+     vector<int>v1;
+     vector<int>v2;
+     
+     for(int i=0;i<s.size();i++)
+     {
+         if(s[i]==word1)
+         v1.push_back(i);
+     }
+     for(int i=0;i<s.size();i++)
+     {
+         if(s[i]==word2)
+         v2.push_back(i);
+     }
+     int check=INT_MAX;
+     for(int i=0;i<v1.size();i++)
+     {
+         for(int j=0;j<v2.size();j++)
+         {
+             if(v1[i]>v2[j])
+             {
+                 if(check>v1[i]-v2[j])
+                 check=v1[i]-v2[j];
+             }
+             else
+             {
+                 
+                 if(check>v2[j]-v1[i])
+                 check=v2[j]-v1[i];
+             }
+         }
+     }
+	    
+	    return check;
+	}
