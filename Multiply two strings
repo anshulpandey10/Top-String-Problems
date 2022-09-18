@@ -1,0 +1,36 @@
+string multiplyStrings(string s1, string s2) {
+        if(s1=="0" || s2=="0")return "0";
+        int track1=0;
+        int track2=0;
+        if(s1[0]=='-')
+        track1=1;
+        if(s2[0]=='-')
+        track2=1;
+        
+       vector<int>num(s1.size()+s2.size(),0);
+       
+       for(int i=s1.size()-1;i>=0;i--)
+       {
+           for(int j=s2.size()-1;j>=0;j--)
+           {
+               if(s1[i]!='-' && s2[j]!='-')
+               {num[i+j+1]+=(s1[i]-'0')*(s2[j]-'0');
+               num[i+j]+=num[i+j+1]/10;
+               num[i+j+1]%=10;}
+           }
+       }
+       
+       int i=0;
+       while(i<num.size() && num[i]==0)++i;
+       
+       string res="";
+       if((track1==1 || track2==1) && (track1!=track2))
+       res.push_back('-');
+       
+      
+       while(i<num.size())res.push_back(num[i++]+'0');
+    
+        
+        return res;
+        
+    }
