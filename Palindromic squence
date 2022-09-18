@@ -1,0 +1,25 @@
+
+	int isPalindrome(string S)
+	{  int count=0;
+	int n=S.length();
+	    // Your code goes here
+	    if(n>1){
+	    for(int i=0;i<S.length()/2;i++)
+	    {
+	        if(S[i]==S[n-1-i])
+	        count=1;
+	        else
+	        {
+	            count=0;
+	            break;
+	        }
+	    }
+	    
+	    if(count==1)
+	    return 1;
+	    else
+	    return 0;}
+	    
+	    else
+	    return true;
+	}
