@@ -1,0 +1,26 @@
+ bool isAnagram(string a, string b){
+         unordered_map<char,int>umap;
+    for(int i=0;i<a.size();i++)
+    umap[a[i]]++;
+    
+    for(int i=0;i<b.size();i++)
+    {
+        char key=b[i];
+        if(umap.find(key)!=umap.end())
+        {
+            auto temp=umap.find(key);
+            temp->second--;
+            if(temp->second==0)
+            umap.erase(b[i]);
+        }
+        else
+        return false;
+    }
+    
+    if(umap.size()==0)
+    return true;
+    else
+    return false;
+        // Your code here
+        
+    }
