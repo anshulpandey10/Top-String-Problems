@@ -1,0 +1,44 @@
+ bool areKAnagrams(string str1, string str2, int k) {
+        // code here
+        if(str1.length()==str2.length())
+        {
+           unordered_map<char,int>umap1;
+           unordered_map<char,int>umap2;
+           
+           for(int i=0;i<str1.length();i++)
+           {
+               umap1[str1[i]]++;
+               umap2[str2[i]]++;
+           }
+           
+           for(auto itr=umap1.begin();itr!=umap1.end();itr++)
+           {   int x=itr->second;
+               while(x--)
+               {
+               if(umap2.find(itr->first)!=umap2.end())
+               {   
+                   auto temp=umap2.find(itr->first);
+                   temp->second--;
+                   
+                  if(temp->second==0)
+                  umap2.erase(temp);
+                 
+               }
+               }
+           }
+           
+           int count=0;
+           for(auto itr=umap2.begin();itr!=umap2.end();itr++)
+           {
+               int temp=itr->second;
+               count+=temp;
+           }
+           
+           if(count<=k)
+           return true;
+           else 
+           return false;
+        }
+        else
+        return false;
+    }
