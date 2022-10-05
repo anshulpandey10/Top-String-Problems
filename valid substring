@@ -1,19 +1,30 @@
- char nonrepeatingCharacter(string S)
-    {
-       //Your code here
-       unordered_map<char,int>umap;
-       for(int i=0;i<S.length();i++)
-       umap[S[i]]++;
-       
-       for(int i=0;i<S.length();i++)
+int findMaxLen(string s) {
+        // code here
+       int ans=0;
+       stack<int>s1;
+       for(int i=0;i<s.length();i++)
        {
-           char key=S[i];
-           auto temp=umap.find(key);
-           if(temp->second==1)
-           return key;
+           if(s[i]=='(')
+           s1.push(i);
+          
+           if(s[i]==')')
+           { 
+               if(s1.size()!=0 && s[s1.top()]=='(')
+               s1.pop();
+               else
+               s1.push(i);
+           } 
        }
+       int track=s.length();
+       while(s1.empty()!=true)
+       {int ele=s1.top();
+       s1.pop();
        
-       
-       return '$';
-       
+           ans=max(ans,track-ele-1);
+           track=ele;
+          
+       }
+        
+        return max(ans,track);
+        
     }
